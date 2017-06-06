@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+	<ui:composition template="jobSeekerLayout.xhtml">
+		<ui:define name="innerage">
+			<table class="table" cellspacing='5' cellpadding='2'>
+			<caption class="tableCaption">
+				Job Details
+			</caption>
+			<tr>
+				<td colspan="2">
+					<h:graphicImage styleClass="image2" library="images" name="SPANLogo.jpg" alt="Company Logo"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="fieldName">Job Posted Date:</td>
+				<td class="filedValue">#{jobSeeker.job.postedDate}</td>
+			</tr>
+			<tr>
+				<td class="fieldName">Company Name:</td>
+				<td class="filedValue">#{jobSeeker.job.companyName}</td>
+			</tr>
+			<tr>
+				<td class="fieldName">Company Profile:</td>
+				<td class="filedValue">#{jobSeeker.job.companyProfile}</td>
+			</tr>
+			<tr>
+				<td class="fieldName">Industry:</td>
+				<td class="filedValue">#{jobSeeker.job.industry}</td>
+			</tr>
+			<tr>
+				<td class="fieldName">jobSeeker.job Role/Position:</td>
+				<td class="filedValue">#{jobSeeker.job.position}</td>
+			</tr>
+			<tr>
+				<td class="fieldName">Salary:</td>
+				<td class="filedValue">#{jobSeeker.job.salary} PM</td>
+			</tr>
+			<tr>
+				<td class="fieldName">Key Skills:</td>
+				<td class="filedValue">#{jobSeeker.job.skills}</td>
+			</tr>
+			<tr>
+				<td class="fieldName">Educational Qualifications:</td>
+				<td class="filedValue">#{jobSeeker.job.qualifications}</td>
+			</tr>
+			<tr>
+				<td class="fieldName">Experience:</td>
+				<td class="filedValue">#{jobSeeker.job.experience}Years</td>
+			</tr>
+			<tr>
+				<td class="fieldName">Job Location:</td>
+				<td class="filedValue">#{jobSeeker.job.jobLcation}</td>
+			</tr>
+			<tr>
+				<td class="fieldName">Venue Location:</td>
+				<td class="filedValue">#{jobSeeker.job.venueLocation}</td>
+			</tr>
+			<tr>
+				<td class="fieldName"><h:outputLabel value="Last Date To Apply:" rendered="#{jobSeeker.retrieveType != 'Applied Jobs'}" /></td>
+				<td class="filedValue"><h:outputLabel value="#{jobSeeker.job.lastDate}" rendered="#{jobSeeker.retrieveType != 'Applied Jobs'}" /></td>
+			</tr>
+		</table>
+			<h:commandButton value="Apply Now" style="margin-left: 15%;margin-top: 1%;" action="#{jobSeeker.applyJob}" rendered="#{jobSeeker.retrieveType != 'Applied Jobs'}"/>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

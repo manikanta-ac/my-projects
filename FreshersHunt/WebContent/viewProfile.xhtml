@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets" >
+    <h:head>
+    	<h:outputStylesheet library="css" name="style.css" />
+    </h:head>
+    <h:body>
+    	<h:form>
+    	   <ui:composition template="jobSeekerLayout.xhtml"> 
+    		<ui:define name="innerage">
+    		<div class="#{profile.fotnSize}">
+    			<table class="personal_table" align="center" border="0" >
+		<caption class="tableCaption">Personal Details</caption>
+			<tr>
+				<td><label class="fieldName"> First name: </label></td>
+				<td>#{profile.user.firstName}
+				</td>
+			</tr>
+
+			<tr>
+				<td class="fieldName"><label> Email Id: </label></td>
+				<td>#{profile.user.email}
+				</td>
+			</tr>
+			<tr>
+				<td class="fieldName">Date of Birth</td>
+				<td>20/03/1991
+   				</td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td class="fieldName"><label> Address </label></td>
+				<td>#100/38, 20th Main, 9th Cross, Venkateswara Layout</td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td class="fieldName"><label>Country </label></td>
+				<td>India
+	   			</td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td class="fieldName"><label>State </label></td>
+				<td>Karnataka</td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td class="fieldName"><label> City </label></td>
+				<td>Bangalore</td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td class="fieldName"><label> Pincode </label></td>
+				<td>560070</td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td class="fieldName"><label> Gender </label></td>
+				<td>Male</td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td class="fieldName"><label> Marital Status </label></td>
+				<td>Single</td>
+			</tr>
+	</table>
+	
+	
+	<table class="academic_table" align="center" border="0" cellspacing="2" cellpadding="2">
+		<caption class="tableCaption">Academic details</caption>
+			<tr>
+				<td class="fieldName"><label> Highest Qualification </label></td>
+				<td>#{profile.user.qualification}</td>
+			</tr>
+			<tr>
+				<td class="fieldName"><label> College Name </label></td>
+				<td>#{profile.user.collegeName}</td>
+			</tr>
+			<tr>
+				<td class="fieldName"><label> Stream/Specialisation </label></td>
+				<td>#{profile.user.stream}</td>
+			</tr>
+			<tr>
+				<td class="fieldName"><label> Percentage </label></td>
+				<td>#{profile.user.percentage}</td>
+			</tr>
+			<tr>
+				<td class="fieldName"><label> University </label></td>
+				<td>JNTU</td>
+			</tr>
+			<tr>
+				<td class="fieldName"><label> Year of Passing </label></td>
+				<td>#{profile.user.yearOfPassing}</td>
+			</tr>
+			
+			</table>
+			<h:panelGroup style=" margin-left: 25%;margin-top: 10%;position: absolute;">
+				<h:commandButton value="Normal Font" actionListener="#{profile.setNormalSize}" immediate="true"/> 
+				<h:commandButton value="Large Font" actionListener="#{profile.setLargeSize}" immediate="true"/>
+			</h:panelGroup>
+			</div>
+    		</ui:define>
+    		</ui:composition>
+    	</h:form>
+    </h:body>
+</html>

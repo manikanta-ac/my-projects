@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head><h:outputStylesheet library="css" name="style.css" /></h:head>
+<h:body>
+	<ui:composition template="commonLayout.xhtml">
+		<ui:define name="content">
+			<h:form>
+				<hr/>
+					<div align="left">
+						<p>
+							<h:graphicImage library="images" name="images2.jpg" height="400" width="400" alt="Feedback Us"/>
+						</p>
+					</div>
+				<table class="feedback_table" align="right">
+					<tr>
+						<td colspan="2">
+							<br />	<br />	<br />
+							<p style="font-family: arial; color: #318CE7; font-size: 20px; margin-top: 20px; text-align: center;">
+								Please take a moment to fill out this short survey form. Our goal
+								is to provide you with the best possible information and service.
+								Your opinion is very important to us and will help us to better
+								meet your needs.</p>
+								<h5 style="color: green;">Your information is not shared or	rented with third parties.</h5>
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align: right;"><label class="fieldName"> Name:* </label></td>
+						<td><h:inputText id="name" style="height: 30px; width: 250px;" value="#{feedback.name}"
+								required="true" requiredMessage="You must enter Your Name"
+								converterMessage="First Name must be alpha numeric"
+								validatorMessage="Name must be with the minimum length of 4">
+								<f:validateLength minimum="4" />
+							</h:inputText> <h:message for="name" styleClass="error" /></td>
+
+					</tr>
+					<tr>
+						<td style="text-align: right;" class="fieldName"><label> Email Id: </label></td>
+						<td><h:inputText id="email" style="height: 30px; width: 250px;"
+								required="true" requiredMessage="You must enter Email"
+								converterMessage="Email must be alpha numeric"
+								validatorMessage="Email should of format 'abc@xyz.com'">
+								<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+							</h:inputText> <h:message for="email" styleClass="error" /></td>
+					</tr>
+					<tr>
+						<td style="text-align: right;"><label class="fieldName">Post Your Comments:*</label></td>
+						<td>
+							<h:inputTextarea id="cmnts" value="#{feedback.comments}" rows="5" cols="40"
+							required="true" requiredMessage="You must enter Comments"/>
+							<h:message for="cmnts" styleClass="error" />
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align: right;"><label class="fieldName">Ratings:</label></td>
+						<td>
+							<h:selectOneRadio id="ratings" required="true" requiredMessage="You must give Ratings">
+								<f:selectItem itemValue="1" itemLabel="1" />
+					   			<f:selectItem itemValue="2" itemLabel="2" />
+					   			<f:selectItem itemValue="3" itemLabel="3" />
+					   			<f:selectItem itemValue="4" itemLabel="4" />
+					   			<f:selectItem itemValue="5" itemLabel="5" />
+						</h:selectOneRadio><h:message for="ratings" styleClass="error" />
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<h:panelGroup>
+								<h:commandButton value="Post Comments" action="#{feedback.storeFeedback}"/> 
+								<h:commandButton value="Reset" type="reset" />
+							</h:panelGroup>
+						</td>
+					</tr>
+				</table>
+				<hr/>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>SPANJobPortal</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<description />
+		<display-name>Registration</display-name>
+		<servlet-name>Registration</servlet-name>
+		<servlet-class>com.span.team1.jobPortal.controller.Registration</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Registration</servlet-name>
+		<url-pattern>/Registration</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description />
+		<display-name>Login</display-name>
+		<servlet-name>Login</servlet-name>
+		<servlet-class>com.span.team1.jobPortal.controller.Login</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/Login</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description></description>
+		<display-name>JobHistory</display-name>
+		<servlet-name>JobHistory</servlet-name>
+		<servlet-class>com.span.team1.jobPortal.controller.JobHistory</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>JobHistory</servlet-name>
+		<url-pattern>/JobHistory</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>ApplyingJob</display-name>
+		<servlet-name>ApplyingJob</servlet-name>
+		<servlet-class>com.span.team1.jobPortal.controller.ApplyingJob</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ApplyingJob</servlet-name>
+		<url-pattern>/ApplyingJob</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description />
+		<display-name>Feedback</display-name>
+		<servlet-name>Feedback</servlet-name>
+		<servlet-class>com.span.team1.jobPortal.controller.Feedback</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Feedback</servlet-name>
+		<url-pattern>/Feedback</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description />
+		<display-name>RecommendedJobs</display-name>
+		<servlet-name>RecommendedJobs</servlet-name>
+		<servlet-class>com.span.team1.jobPortal.controller.RecommendedJobs</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RecommendedJobs</servlet-name>
+		<url-pattern>/RecommendedJobs</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description />
+		<display-name>SearchJob</display-name>
+		<servlet-name>SearchJob</servlet-name>
+		<servlet-class>com.span.team1.jobPortal.controller.SearchJob</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SearchJob</servlet-name>
+		<url-pattern>/SearchJob</url-pattern>
+	</servlet-mapping>
+
+</web-app>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+	<ui:composition template="jobSeekerLayout.xhtml">
+		<ui:define name="innerage">
+				<h:dataTable var="job" value="#{jobSeeker.jobs}"
+					styleClass="mainTable" captionClass="tableCaption"
+					headerClass="heading" rowClasses="even1,odd1"
+					columnClasses="column1">
+					<f:facet name="caption">#{jobSeeker.retrieveType}</f:facet>
+					<h:column>
+						<f:facet name="header">Posted Date</f:facet>
+						#{job.postedDate}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Company</f:facet>
+						#{job.companyName}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Location</f:facet>
+						#{job.jobLcation}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Position</f:facet>
+						#{job.position}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Experience</f:facet>
+						#{job.experience}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Qualification</f:facet>
+						#{job.qualifications}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Last Date</f:facet>
+						#{job.lastDate}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Details</f:facet>
+						<h:commandLink action="#{jobSeeker.viewJob}">
+							<f:param name="jobId" value="#{job.jobId}" />
+							<h:graphicImage library="images" name="view.jpg" alt="View Job" />
+						</h:commandLink>
+					</h:column>
+				</h:dataTable>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

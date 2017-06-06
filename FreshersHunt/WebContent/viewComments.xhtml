@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets" >
+    <h:head></h:head>
+    <h:body>
+    	<h:outputStylesheet library="css" name="style.css" />
+    	   <ui:composition template="commonLayout.xhtml">
+		<ui:define name="content">
+			<h2 align="center" style="color: FireBrick;">ThankYou For Giving Valuable Comments...!)</h2>
+			<h:form>
+				<h:dataTable var="feed" value="#{feedback.allFeedbacks}" 
+					styleClass="mainTable" captionClass="caption2" headerClass="heading" 
+					rowClasses="even,odd" columnClasses="column1">
+					<f:facet name="caption">Previous Comments</f:facet>
+					<h:column>
+						<f:facet name="header">User Name</f:facet>
+						#{feed.name}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Comment</f:facet>
+						#{feed.comments}
+					</h:column>
+				</h:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+    </h:body>
+</html>

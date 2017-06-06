@@ -1,0 +1,155 @@
+.companyName
+{
+	color: darkgreen;
+	font-family: Calibri ;	
+}
+
+.welcomeText
+{
+	font-family: Corbel;
+	font-size: 35;
+	color: FireBrick ;
+	font-weight: bold;
+}
+
+.submit
+{
+	margin-left: 45%;
+	margin-top: 10%;	
+}
+.table
+{
+	margin-left: 120;
+	border-top-width:10;
+}
+.academic_table
+{
+	margin-left: 40%;
+	margin-top: -37%;
+}
+.academic_table1
+{
+	margin-left: 40%;
+	margin-top: -28%;
+}
+.personal_table
+{
+	margin-right: 40%;
+}
+.feedback_table
+{
+	margin-top: -38%;
+}
+.fieldName
+{
+	color: Indigo ;
+	font-size:18px;
+	font-weight: bold;
+}
+
+.tableCaption
+{
+	font-size: 20;
+	color: green;
+	font-weight: bold; 
+}
+
+.image1
+{
+	margin-top: -50%;
+	height: 50%;
+}
+
+.image2
+{
+	margin-top: -32%;
+	height: 20%;
+}
+
+.image3
+{
+	margin-top: -40%;
+	height: 60%;
+}
+
+.hovermenu ul {
+	font: bold 18px calibri;
+	height: 25px;
+}
+
+.hovermenu ul li {
+	list-style: none;
+	display: inline;
+}
+
+.hovermenu ul li a {
+	padding: 10px 110px 10px 100px;
+	text-decoration: none;
+	float: left;
+	color: white;
+	background-color: rgb(15, 41, 77);
+	border: 1px solid rgb(15, 41, 77);
+}
+
+.hovermenu ul li a:hover {
+	background-color: #e5e5e5;
+	color: rgb(15, 41, 77);
+}
+
+.home_header
+{
+	font-family: Forte;
+	color: DarkCyan ;	
+	font-size: 50;
+}
+.footer {
+   margin-bottom:25%;
+}
+
+.login
+{
+	margin-top:-20%;
+	margin-left:70%;
+	height:110%;
+}
+span
+{
+color:red;
+}
+
+.hovermenu ul{
+font: bold 18px calibri;
+height: 25px;
+}
+
+.buttonmenu{
+list-style-type: none;
+margin: 0;
+padding: 0;
+width: 200px;
+}
+
+.buttonmenu li a{
+color: white;
+display: block;
+width: 100%;
+height: 55px;
+padding: 2px 4px;
+text-decoration: none;
+font-weight: bold;
+border: 1px solid;
+border-color:#D5BFD0 #5A3A54 #5A3A54 #D5BFD0; /*light dark dark light*/
+background-color: rgb(15,41,77);
+text-decoration:none;
+}
+
+
+.buttonmenu li a:visited{
+color: white;
+}
+
+.buttonmenu li a:hover, .buttonmenu li a:active{
+color: black;
+background-color: #e5e5e5;
+}
+

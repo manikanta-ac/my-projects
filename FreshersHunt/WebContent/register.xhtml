@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets" >
+    <h:head>
+    	<title>Freshers Hunt</title>
+		<h:outputStylesheet library="css" name="style.css" />
+		<h:outputStylesheet library="js" name="loginValidate.js" />
+    </h:head>
+    <h:body>
+    	   <ui:composition template="commonLayout.xhtml"> 
+    		<ui:define name="content">
+    			<h:form>
+    				<p class="welcomeText">Welcome to #{profile.createOrEdit}:</p>
+    				<h:inputHidden value="#{profile.createOrEdit}"/>
+
+		<table class="personal_table" align="center" border="0" >
+		<caption class="tableCaption">Personal Details</caption>
+			<tr>
+				<td><label class="fieldName"> First name:* </label></td>
+				<td><h:inputText id="fN" value="#{profile.user.firstName}" 
+										required="true"
+										requiredMessage="You must enter First Name"
+										converterMessage="First Name must be alpha numeric"
+										validatorMessage="First Name must be with the minimum length of 5">
+					<f:validateLength minimum="5"/>
+					</h:inputText>
+					<h:message for="fN" styleClass="error"/>
+				</td>
+			</tr>
+
+			<tr>
+				<td class="fieldName"><label> Last name:* </label></td>
+				<td><input type="text" name="lname"/></td>
+			</tr>
+			<tr>
+				<td class="fieldName"><label> Email Id:* </label></td>
+				<td><h:inputText id="email" value="#{profile.user.email}" 
+										required="true"
+										requiredMessage="You must enter Email"
+										converterMessage="Email must be alpha numeric"
+										validatorMessage="Email should of format 'abc@xyz.com'">
+					<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+					</h:inputText>
+					<h:message for="email" styleClass="error"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="fieldName"><label> Password:* </label></td>
+				<td><h:inputSecret id="pd" value="#{profile.user.password}" 
+										required="true"
+										requiredMessage="You must enter Password"
+										converterMessage="Password must be alpha numeric"
+										validatorMessage="Password must be with the minimum length of 4">
+					<f:validateLength minimum="4"/>
+					</h:inputSecret>
+					<h:message for="pd" styleClass="error"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="fieldName"><label>Retype Password:* </label></td>
+				<td><input type="password" name="repassword"/></td>
+			</tr>
+			<tr>
+				<td class="fieldName">Date of Birth</td>
+				<td>
+					<h:selectOneMenu>
+						<f:selectItems value="#{profile.daysPulldown}" />
+	   				</h:selectOneMenu>
+	   				<h:selectOneMenu>
+						<f:selectItems value="#{profile.monthPulldown}" />
+	   				</h:selectOneMenu>
+	   				<h:selectOneMenu>
+						<f:selectItems value="#{profile.yearPulldown}" />
+	   				</h:selectOneMenu>
+   				</td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td class="fieldName"><label> Address </label></td>
+				<td><h:inputTextarea rows="4" cols="20"/> </td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td class="fieldName"><label>Country </label></td>
+				<td>
+					<h:selectOneMenu>
+						<f:selectItems value="#{profile.countryPulldown}" />
+	   				</h:selectOneMenu>
+	   			</td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td class="fieldName"><label>State </label></td>
+				<td>
+					<h:selectOneMenu>
+						<f:selectItems value="#{profile.statePulldown}" />
+	   				</h:selectOneMenu>
+				</td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td class="fieldName"><label> City </label></td>
+				<td>
+					<h:selectOneMenu>
+						<f:selectItems value="#{profile.cityPulldown}" />
+	   				</h:selectOneMenu>
+				</td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td class="fieldName"><label> Pincode </label></td>
+				<td><h:inputText id="pin" 
+									required="true"
+									requiredMessage="You must enter Pin code"
+									converterMessage="Pin code must be numeric">
+					<f:convertNumber integerOnly="true" />
+					</h:inputText>
+					<h:message for="pin" styleClass="error"/></td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td class="fieldName"><label> Gender </label></td>
+				<td>
+					<h:selectOneRadio>
+					   	<f:selectItem itemValue="M" itemLabel="Male" />
+					   	<f:selectItem itemValue="F" itemLabel="Female" />
+					</h:selectOneRadio>
+				</td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td class="fieldName"><label> Marital Status </label></td>
+				<td>
+					<h:selectOneMenu>
+						<f:selectItem itemValue="S" itemLabel="Single" />
+					   	<f:selectItem itemValue="M" itemLabel="Married" />
+					</h:selectOneMenu>
+				</td>
+			</tr>
+	</table>
+	
+	
+	<table class="academic_table" align="center" border="0" cellspacing="2" cellpadding="2">
+		<caption class="tableCaption">Academic details</caption>
+			<tr>
+				<td class="fieldName"><label> Highest Qualification </label></td>
+				<td>
+					<h:selectOneMenu id="hQ" value="#{profile.user.qualification}" required="true" 
+										requiredMessage="You must select Qualification">
+						<f:selectItems value="#{profile.qualificationPulldown}" />
+	   				</h:selectOneMenu>
+	   				<h:message for="hQ" styleClass="error"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="fieldName"><label> College Name </label></td>
+				<td><h:inputText id="cN" value="#{profile.user.collegeName}" 
+										required="true"
+										requiredMessage="You must enter College Name"
+										converterMessage="College must be alpha numeric">
+					</h:inputText>
+					<h:message for="cN" styleClass="error"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="fieldName"><label> Stream/Specialisation </label></td>
+				<td><h:inputText id="stream" value="#{profile.user.stream}" 
+										required="true"
+										requiredMessage="You must enter Stream"
+										converterMessage="Stream must be alpha numeric"
+										validatorMessage="Stream must be with the minimum length of 3">
+					<f:validateLength minimum="3"/>
+					</h:inputText>
+					<h:message for="stream" styleClass="error"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="fieldName"><label> Percentage </label></td>
+				<td>
+					<h:inputText id="per" value="#{profile.user.percentage}" 
+									required="true"
+									requiredMessage="You must enter Percentage"
+									converterMessage="Percentage must be numeric">
+						</h:inputText>
+					<h:message for="per" styleClass="error"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="fieldName"><label> University </label></td>
+				<td><h:inputText /></td>
+			</tr>
+			<tr>
+				<td class="fieldName"><label> Year of Passing </label></td>
+				<td>
+					<h:selectOneMenu id="yop" value="#{profile.user.yearOfPassing}" required="true" 
+										requiredMessage="You must select YearOfPassing">
+						<f:selectItems value="#{profile.yearOfPassPulldown}" />
+	   				</h:selectOneMenu>
+	   				<h:message for="yop" styleClass="error"/>
+				</td>
+			</tr>
+			
+			</table>
+			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+			<h:panelGroup style="margin-left: 45%;">
+				<h:commandButton value="#{profile.createOrEdit}" action="#{profile.registerUser}"/> 
+				<h:commandButton value="Reset" type="reset" />
+			</h:panelGroup>
+    		</h:form>
+    		</ui:define>
+    		</ui:composition>
+    </h:body>
+</html>

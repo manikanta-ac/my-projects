@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" >
+<h:head>
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+	<ui:composition>
+		<h3 align="center">Hi #{user.firstName},</h3>
+			<br />Freshers Hunt is a specialised Job Search portal. 
+				We provide you multiple way to manage your job search 
+				with different features as:
+				
+				<h:panelGrid columns="2">
+					<span class="even">Job History:</span>
+					<span class="odd">Check out your earlier applied jobs.<br/></span>
+					<span class="even">Recommended Jobs:</span>
+					<span class="odd">Recommended jobs based on your profile.<br/></span>
+					<span class="even">Search Jobs:</span>
+					<span class="odd">Search for all the jobs in the industry.<br/></span>
+					<span class="even">View Profile:</span>
+					<span class="odd">View your complete profile.<br/></span>
+					<span class="even">Edit Profile:</span>
+					<span class="odd">Modify your complete profile. <br/></span>
+				</h:panelGrid>
+	</ui:composition>
+</h:body>
+</html>

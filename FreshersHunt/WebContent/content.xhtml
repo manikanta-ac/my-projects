@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets" >
+    <h:head>
+    	<h:outputStylesheet library="css" name="style.css" />
+    	<h:outputStylesheet library="js" name="loginValidate.js" />
+    </h:head>
+    <h:body>
+    	   <ui:composition> 
+    	   		 <font size="4"><pre>
+	  SPAN, an EVRY Group company is an established software services 
+	  company with a keen accent on Insurance, Financial Services, 
+	  Retail, Travel, Transport,Logistics and Independent Software
+	  Vendors. Our focus is to ease our client into a long-term 
+	  relationship with a business and execution model that aligns with
+	  their culture. SPAN's management team is deeply involved in sustaining
+	  relationships through the fulfillment of both measurable and intangible
+	  expectations.
+	  We believe in being a strong partner and 'Steering Progress. Together'.
+				</pre></font>
+				<h:form>
+				<div class="login">
+				<h:outputText styleClass="tableCaption" style="margin-left: 100px;" value="Login Here"/>
+				<h:panelGrid columns="3">
+						<h:outputText styleClass="fieldName" value="Email-id:"/>
+				 
+						<h:inputText id="un" value="#{user.email}" size="20" label="Email" />
+				 
+						<h:message for="un" styleClass="error"/>
+				 
+						<h:outputText styleClass="fieldName" value="Password:"/>
+						
+						<h:inputSecret id="pd" value="#{user.password}" size="20" label="Password" />
+				 
+						<h:message for="pd" styleClass="error"/>
+						
+						<h:inputHidden id="both"/>
+						<h:message for="both" styleClass="error"/>
+				  </h:panelGrid>
+					<table>	
+						<tr align="center">
+							<td><br/> <h:commandButton value="Login" action="#{user.login}"/> </td>
+							<td><br/> <h:commandButton value="Reset" type="reset" /> </td>
+						</tr>
+						<tr>
+						<td colspan="2"><br/></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><h:commandButton value="Click Here To Register" action="#{profile.openReigistration}"/></td>
+						</tr>
+						<tr>
+						<td><br/></td>
+						</tr>
+					</table>
+					<fieldset style="width: 75%;">
+						<legend class="fieldName">News:</legend>
+						<marquee>Openings at Span Infotech.</marquee>
+					</fieldset>
+				</div>
+				</h:form>
+    	   </ui:composition>
+    </h:body>
+</html>

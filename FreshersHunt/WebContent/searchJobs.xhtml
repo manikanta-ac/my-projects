@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+	<ui:composition template="jobSeekerLayout.xhtml">
+		<ui:define name="innerage">
+			<p class="welcomeText" align="center">Welcome To Job Search</p><br/>
+			<h:graphicImage styleClass="image3" library="images" name="search.jpg" alt="Your Req"/>
+			<table class="table" cellspacing='5' cellpadding='12'>
+				<caption class="tableCaption">Search Jobs</caption>
+				<tr>
+					<td class="fieldName">Category:</td>
+					<td class="filedValue">
+						<h:selectOneMenu id="catg" value="#{jobSearch.industry}">
+								<f:selectItems value="#{jobSearch.categoryPulldown}" />
+						</h:selectOneMenu>
+					</td>
+				</tr>
+				<tr>
+					<td class="fieldName">Keywords:</td>
+					<td class="filedValue"><h:inputText value="#{jobSearch.keywords}"/> 
+					<br/><font size="2" color="gray">Skills,Designation,...</font></td>
+				</tr>
+				<tr>
+					<td class="fieldName">Experience:</td>
+					<td class="filedValue">
+						<h:selectOneMenu id="exp" value="#{jobSearch.experience}">
+								<f:selectItems value="#{jobSearch.experiancePulldown}" />
+						</h:selectOneMenu>
+						<font size="2" color="gray">Years</font>
+					</td>
+				</tr>
+				<tr>
+					<td class="fieldName">Educational Qualifications:</td>
+					<td class="filedValue">
+						<h:selectOneMenu id="quli" value="#{jobSearch.quali}">
+								<f:selectItems value="#{jobSearch.qualificationPulldown}" />
+						</h:selectOneMenu>
+					</td>
+				</tr>
+				<tr>
+					<td class="fieldName">Salary:</td>
+					<td class="filedValue">
+						<h:selectOneMenu id="sal" value="#{jobSearch.salary}">
+								<f:selectItems value="#{jobSearch.salaryPulldown}" />
+						</h:selectOneMenu>
+						<font size="2" color="gray">LPA</font>
+					</td>
+				</tr>
+				<tr>
+					<td class="fieldName">Location:</td>
+					<td class="filedValue">
+						<h:inputText value="#{jobSearch.location}"/>
+					 	<br/> <font size="2" color="gray">Separate multiple locations by comma</font>
+					 </td>
+				</tr>
+			</table>
+			<h:panelGroup style="margin-left: 25%;">
+				<h:commandButton value="Search Jobs" action="#{jobSearch.searchJobs}"/> 
+				<h:commandButton value="Reset" type="reset" />
+			</h:panelGroup>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

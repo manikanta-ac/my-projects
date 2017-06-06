@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+		<h:outputStylesheet library="css" name="style.css" />
+    </h:head>
+    <h:body>
+    <ui:composition template="commonLayout.xhtml"> 
+    		<ui:define name="content">
+    			<h:form>
+		    	<table style="width: 100%;">
+			    	<tr>
+			    		<td colspan="2">
+			    			<div align="right" class="companyName">Welcome #{user.firstName}...!<h:commandLink action="#{user.logout}">
+			    				<h:graphicImage library="images" name="logout.png" style="width: 30px; height: 30px;" title="Logout" alt="Log Out"/>
+			    			</h:commandLink></div>
+			    		</td>
+			    	</tr>
+				<tr>
+					<td colspan="2">
+						<hr />
+					</td>
+				</tr>
+				<tr>
+					<td width="20%">
+						<ul class="buttonmenu">
+							<li><h:commandLink value="Job History" action="#{jobSeeker.jobsHistory}" /></li>
+							<li><h:commandLink value="Recommended Jobs" action="#{jobSeeker.getRecommendedJobs}" /></li>
+							<li><h:commandLink value="Search Jobs" action="searchJobs" /></li>
+							<li><h:commandLink value="View Profile" action="#{profile.viewProfile}" /></li>
+							<li><h:commandLink value="Edit Profile" action="#{profile.editProfile}" /></li>
+						</ul>
+					</td>
+					<td>
+						<div id="innerage">
+							<ui:insert name="innerage">
+								<ui:include src="jobSeekerHomeContent.xhtml" />
+							</ui:insert>
+						</div>
+					</td>
+				</tr>
+			</table>
+			</h:form>
+    	</ui:define>
+    </ui:composition>
+    </h:body>
+</html>
