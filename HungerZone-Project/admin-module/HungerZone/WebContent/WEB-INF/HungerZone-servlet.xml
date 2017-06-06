@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                    http://www.springframework.org/schema/beans/spring-beans.xsd
+                    http://www.springframework.org/schema/context
+                    http://www.springframework.org/schema/context/spring-context.xsd
+                    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+	
+	<context:component-scan base-package="com.span.hungerZone.controller" />
+	<mvc:annotation-driven/>
+	
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/pages/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+		
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory">
+	  		<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+  		<property name="configLocation" ><value>/WEB-INF/hibernate.cfg.xml</value></property>
+  		<property name="annotatedClasses">
+     		<list>
+     			<value>com.span.hungerZone.model.Admin</value>
+     			<value>com.span.hungerZone.model.Category</value>
+       			<value>com.span.hungerZone.model.Customer</value>
+       			<value>com.span.hungerZone.model.Dish</value>
+       			<value>com.span.hungerZone.model.Order</value>
+       			<value>com.span.hungerZone.model.OrderedDish</value>
+       			<value>com.span.hungerZone.model.RegCustomer</value>
+       			<value>com.span.hungerZone.model.Restaurant</value>
+       			<value>com.span.hungerZone.model.RestaurantCategoryAssociation</value>
+       			<value>com.span.hungerZone.model.RestaurantCategoryDishAssociation</value>
+     		</list>
+   		</property>
+	</bean>
+	
+	<bean id="hungerZoneDAO" class="com.span.hungerZone.dao.HungerZoneDAOImpl">
+    	<property name="hibernateTemplate">
+	  		<ref bean="hibernateTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+   		<property name="sessionFactory" ref="sessionFactory" />
+	</bean> 
+		
+	<bean id="hungerZoneService" class="com.span.hungerZone.service.HungerZoneServiceImpl" autowire="byName"/>		
+	
+</beans>
+
