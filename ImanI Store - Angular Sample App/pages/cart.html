@@ -1,0 +1,25 @@
+<h2>Cart</h2>
+<table style="width:100%; item.product.">
+  <tr>
+    <th>Item Name</th>
+    <th>Quantity</th>
+    <th>Total Cost</th>
+    <th>Actions</th>
+  </tr>
+  <tr ng-repeat="item in cart">
+  	<td>{{item.product.name}}</td>
+  	<td>{{item.quantity}}</td>
+  	<td>{{item.product.cost * item.quantity | currency}}</td>
+  	<td><button ng-click="removeFromCart(item.product.id)">Remove</button></td>
+  </tr>
+</table>
+
+<div ng-show="totalCost > 0">
+===================== <br>
+Cost: {{totalCost}}<br>
+Tax(14%): {{totalCost * 0.14 | number : 2}}  <br>
+===================== <br>
+Total: {{totalCost + totalCost * 0.14 | currency}}<br>
+=====================
+</div>
+

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="products">
+<head>
+<title>List Of Products</title>
+<script type="text/javascript" src="../angular/angular.min.js"></script>
+<script type="text/javascript" src="../angular/angular-route.min.js"></script>
+<script type="text/javascript" src="../js/products.js"></script>
+</head>
+<body>
+	<div ng-controller="ProductController as pc">
+		<h1>Welcome To ImanI Store</h1> 
+		<div style="display:table-cell;"> 
+			<a ng-repeat="prdct in pc.prodcuts | limitTo:10 | orderBy:prdct.name" ng-click="pc.showProduct(prdct)" 
+			href="#product" style="display: list-item;">{{prdct.name}}</a>
+		</div>
+		<div ng-view="" style="display:table-cell; background-color: gray;"></div>
+		<a ng-show="cart.length > 0" href="#viewCart">View Cart</a>
+	</div>
+</body>
+</html>
