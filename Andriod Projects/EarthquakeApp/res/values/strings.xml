@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">Earthquake</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">EarthquakeList</string>
+    <string name="url">http://10.0.2.2:8080/earthquake.xml</string>
+
+</resources>
