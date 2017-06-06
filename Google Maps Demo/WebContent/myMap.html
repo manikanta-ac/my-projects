@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Map</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      #map-canvas {
+      	width: 900px;
+        height: 500px;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places,weather&sensor=false"></script>
+    <script src="scripts/jquery-1.7.2.js"></script>
+    <script>
+	var map;
+	var marker;
+	var service;
+	var geocoder;
+	var trafficLayer;
+	var weatherLayer;
+	var cloudLayer;
+	var MY_MAPTYPE_ID = 'custom_style';
+
+	function toggleBounce(event) {
+
+		  if (marker.getAnimation() != null) {
+		    marker.setAnimation(null);
+		  } else {
+		    marker.setAnimation(google.maps.Animation.BOUNCE);
+		  }
+		  var contentString = '<div id="content">'+
+		    '<div id="siteNotice">'+
+		    '</div>'+
+		    '<h1 id="firstHeading" class="firstHeading">SPAN Infotech</h1>'+
+		    '<div id="bodyContent">'+
+		    '<p><img src="images/span.jpg"><b>SPAN Infotech</b>We are a mature and growing IT Services Company with over 19 years of experience.'+ 
+		    'We focus on optimizing and aligning our client’s IT initiatives with business strategies. We have a proven track '+
+		    'record of helping clients go to market faster at reduced costs. We reduce cost as a strategy in the overall business plan.'+
+		    'Heritage Site.</p>'+
+		    '<p>Attribution: Uluru, <a href="http://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+		    'http://en.wikipedia.org/w/index.php?title=SPANInfotech</a> '+
+		    '(last visited June 22, 2009).</p>'+
+		    '</div>'+
+		    '</div>';
+
+		    contentString += 'Clicked Location: <br>' + event.latLng.lat() + ',' + event.latLng.lng() + '<br>';
+		    
+			var infowindow = new google.maps.InfoWindow({
+		    	content: contentString
+			});
+
+			infowindow.open(map,marker);
+	}
+	
+	function handleSearchResults(results, status){
+		if (status == google.maps.places.PlacesServiceStatus.OK) {
+		    for (var i = 0; i < results.length; i++) {
+		    	geocoder.geocode({'latLng': results[i].geometry.location}, placeMarkers);
+		    }
+		}
+	}
+
+	function placeMarkers(results, status){
+		    //if (status == google.maps.GeocoderStatus.OK) {
+		      if (results[1]) {
+		        var infowindow1 = new google.maps.InfoWindow();
+		        var marker1 = new google.maps.Marker({
+		            position: results[1].geometry.location,
+		            map: map,
+		            title: 'My Scholl',
+			        icon : 'images/home-icon.png'
+		        });
+		        var address = '';
+			    if (results[1].address_components) {
+			      address = [
+			        (results[1].address_components[0] && results[1].address_components[0].short_name || ''),
+			        (results[1].address_components[1] && results[1].address_components[1].short_name || ''),
+			        (results[1].address_components[2] && results[1].address_components[2].short_name || '')
+			      ].join(' ');
+			    }
+
+			    infowindow1.setContent('<div><strong>' + address + '</strong><br>');
+
+			    google.maps.event.addListener(marker1, 'click', function(){
+			    	infowindow1.open(map, marker1);
+				});
+		        
+		      } else {
+		        alert('No results found');
+		      }
+		    /*} else {
+		      alert('Geocoder failed due to: ' + status);
+		    }*/
+		  }
+	
+	function performSearch(){
+		var request = 
+			{
+				bounds:map.getBounds(),
+				name:"KFC"
+			};
+		service.nearbySearch(request, handleSearchResults);
+	}
+
+	function showPolygons(){
+		 var bermudaTriangle;
+
+		  var triangleCoords = [
+		      new google.maps.LatLng(25.774252, -80.190262),
+		      new google.maps.LatLng(18.466465, -66.118292),
+		      new google.maps.LatLng(32.321384, -64.75737),
+		      new google.maps.LatLng(25.774252, -80.190262)
+		  ];
+
+		  // Construct the polygon
+		  bermudaTriangle = new google.maps.Polygon({
+		    paths: triangleCoords,
+		    strokeColor: '#FF0000',
+		    strokeOpacity: 0.8,
+		    strokeWeight: 2,
+		    fillColor: '#FF0000',
+		    fillOpacity: 0.35
+		  });
+
+		  bermudaTriangle.setMap(map);
+	}
+
+	function searchAutocomplete(){
+
+		var input = document.getElementById('searchTextField');
+		var autocomplete = new google.maps.places.Autocomplete(input);
+
+		  autocomplete.bindTo('bounds', map);
+		  
+		var infowindow2 = new google.maps.InfoWindow();
+		var marker2 = new google.maps.Marker({
+		    map: map
+		  });
+
+		  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+		    infowindow2.close();
+		    marker2.setVisible(false);
+		    input.className = '';
+		    var place = autocomplete.getPlace();
+		    if (!place.geometry) {
+		      // Inform the user that the place was not found and return.
+		      input.className = 'notfound';
+		      return;
+		    }
+
+		    // If the place has a geometry, then present it on a map.
+		    if (place.geometry.viewport) {
+		      map.fitBounds(place.geometry.viewport);
+		    } else {
+		      map.setCenter(place.geometry.location);
+		      map.setZoom(17);  // Why 17? Because it looks good.
+		    }
+		    marker2.setIcon(/** @type {google.maps.Icon} */({
+		      url: place.icon,
+		      size: new google.maps.Size(71, 71),
+		      origin: new google.maps.Point(0, 0),
+		      anchor: new google.maps.Point(17, 34),
+		      scaledSize: new google.maps.Size(35, 35)
+		    }));
+		    marker2.setPosition(place.geometry.location);
+		    marker2.setVisible(true);
+
+		    var address = '';
+		    if (place.address_components) {
+		      address = [
+		        (place.address_components[0] && place.address_components[0].short_name || ''),
+		        (place.address_components[1] && place.address_components[1].short_name || ''),
+		        (place.address_components[2] && place.address_components[2].short_name || '')
+		      ].join(' ');
+		    }
+
+		    infowindow2.setContent('<div><strong>' + place.name + '</strong><br>' + address +'<br>'+place.formatted_phone_number+'<br> <a href="'+place.website+'">'+place.website+'</a>');
+		    infowindow2.open(map, marker2);
+		  });
+	}
+	
+	function initialize(location) {
+		var currentLocation = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+  		var mapOptions = {
+    	zoom: 13,
+    	center: currentLocation,
+    	mapTypeControlOptions: {
+    	      mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.TERRAIN, google.maps.MapTypeId.SATELLITE, MY_MAPTYPE_ID]
+    	    },
+    	mapTypeId: google.maps.MapTypeId.ROADMAP
+  	};
+  	map = new google.maps.Map(document.getElementById('map-canvas'),
+      	mapOptions);
+  	
+  	marker = new google.maps.Marker({
+  		draggable:true,
+  	    animation: google.maps.Animation.DROP,
+  	  	position:currentLocation,
+        map: map,
+        title: 'Manikanta Current Location!'
+    });
+
+  	var featureOpts = [{
+ 		featureType: 'poi.park',
+ 		stylers: [{ color: '#33FF33' }]
+    },
+    {
+        featureType: 'water',
+        stylers: [
+          { color: '#33FFFF' }
+        ]
+      },
+    {
+ 		featureType: 'poi.medical',
+ 		stylers: [{ color: '#FF3333' }]
+    }];
+
+	var styledMapOptions = {
+		name: 'Custom Style'
+	};
+
+	var customMapType = new google.maps.StyledMapType(featureOpts, styledMapOptions);
+
+	map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
+
+  	google.maps.event.addListener(marker, 'click', toggleBounce);
+
+  	service = new google.maps.places.PlacesService(map);
+
+  	google.maps.event.addListenerOnce(map, 'bounds_changed', performSearch);
+
+  	var populationOptions = {
+  	      strokeColor: "#FF0000",
+  	      strokeOpacity: 0.8,
+  	      strokeWeight: 2,
+  	      fillColor: "#FF0000",
+  	      fillOpacity: 0.35,
+  	      map: map,
+  	      center: currentLocation,
+  	      radius: 1000
+  	    };
+  	    cityCircle = new google.maps.Circle(populationOptions);
+
+  	  trafficLayer = new google.maps.TrafficLayer();
+
+  	weatherLayer = new google.maps.weather.WeatherLayer({
+		  temperatureUnits: google.maps.weather.TemperatureUnit.CELSIUS
+	});
+
+  	cloudLayer = new google.maps.weather.CloudLayer();
+
+	showPolygons();
+
+	searchAutocomplete();
+
+	geocoder = new google.maps.Geocoder();
+	
+	}
+
+	google.maps.event.addDomListener(window, 'load', initialize);
+
+	$(document).ready(function(){
+		 navigator.geolocation.getCurrentPosition(initialize);
+
+		 $('#refresh').click(performSearch);
+
+		 $('#traffic').click(function(){
+
+				if(trafficLayer.getMap()){
+					trafficLayer.setMap(null);
+				}else{
+					trafficLayer.setMap(map);
+				}			 
+		 });
+		 $('#weather').click(function(){
+
+				if(weatherLayer.getMap() || cloudLayer.getMap()){
+					weatherLayer.setMap(null);
+					cloudLayer.setMap(null);
+				}else{
+					weatherLayer.setMap(map);
+					cloudLayer.setMap(map);
+				}			 
+		 });
+	});
+
+    </script>
+  </head>
+  <body>
+  <h1 style="color: green;">Maps Demo</h1>
+  <br/><br/>
+  	Enter Location:<input id="searchTextField"><br>
+    <div id="map-canvas"></div>
+    <button id="refresh">Refresh</button>
+    <button id="weather">Weather</button>
+    <button id="traffic">Traffic</button>
+  </body>
+</html>

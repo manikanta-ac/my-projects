@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Map</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles/style.css">
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script src="../scripts/mapScript.js"></script>
+    <script src="../scripts/jquery-1.7.2.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    	$('#categories').hide();
+    	
+    	$('#catg').mouseover(function(){
+    		$('#categories').show();
+    	});
+    	
+    	$('#categories').mouseout(function() {
+    		//$('#categories').hide();
+    	});
+    });
+    </script>
+  </head>
+  <body>
+    <div id="header">
+    	<ul>
+    		<li id='catg'>Categories</li>
+    	</ul>
+    </div>
+    <div id="categories">
+    	<ul>
+    		<li>Store/Shop</li>
+    		<li>Stadium</li>
+    		<li>Hotel</li>
+    		<li>Restaurant</li>
+    		<li>University</li>
+    		<li id='park'><a href="javascript:showPlaces();">Park</a></li>
+    		<li>School</li>
+    		<li>Hospital</li>
+    	</ul>
+    </div>
+    <div id="map-canvas"></div>
+  </body>
+</html>
