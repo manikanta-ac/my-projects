@@ -1,0 +1,126 @@
+.s1
+{
+	color:red;
+	font-style:italic;
+	font-size: 15;
+}
+.welcome
+{
+	color:green;
+	font-size:large;
+	font-style:italic;	
+	font-family: Matura MT Script Capitals;
+	margin-left: 70%;
+}
+.link
+{
+	text-decoration:none;
+}
+a:link {color:#4B0082;}      
+ a:visited {color:#4B0082;}  
+ a:hover {color:#FF1493;}  
+ a:active {color:#FF1493;}  
+ 
+.header
+{
+color:#4B0082;
+font-size:x-large;
+font-family: Copperplate Gothic Bold;
+margin-left: -30%;
+text-align: center;
+}
+
+.userheader
+{
+	height:14%;
+	background: orange; 
+	color: white; 
+	font-size: 20; 
+	padding-top:2px;
+	text-align: right;
+}
+
+.image
+{
+	margin-top: -10%;
+}
+.image2
+{
+	margin-top: -10%;
+}
+.navigator
+{
+background:#F0E68C;
+letter-spacing: 3px;
+width: 100%;
+height:5%;
+padding-top:1%;
+margin-top:13%;
+margin-right: -7%;
+}
+.navigator li
+{
+list-style: none;
+display: inline;
+}
+
+.news
+{
+	color:red;
+}
+.options
+{
+background:#F0E68C;
+letter-spacing: 3px;
+padding: 7px 0px 0 0;
+width: 100%;
+height:5%;
+margin-top:13%;
+margin-right: -7%;
+}
+.options li
+{
+list-style: none;
+}
+
+.login
+{
+width:30%;
+color:#4B0082;
+font-size:18px;
+font-weight: bold;
+}
+
+.trainslist
+{
+	margin-top: -30%;
+	margin-left: 31%;
+}
+
+.frameheader
+{
+	background-color: #4B0082;
+	color:white;	
+}
+.middle
+{
+margin-right:35%;
+}
+
+.table
+{
+	margin-left: 50%;
+	margin-top: 0%; 
+}
+.userhome
+{
+	margin-left: 33%;
+	margin-top: -30%;
+	color:green;	
+}
+.quantity
+{
+	font-size: 20;
+	margin-left: 40%;
+	color:#4B0082;
+}
