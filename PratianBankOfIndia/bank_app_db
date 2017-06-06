@@ -1,0 +1,156 @@
+CREATE DATABASE  IF NOT EXISTS `bank_app` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `bank_app`;
+-- MySQL dump 10.13  Distrib 5.1.40, for Win32 (ia32)
+--
+-- Host: localhost    Database: bank_app
+-- ------------------------------------------------------
+-- Server version	5.1.36-community-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `icicibank`
+--
+
+DROP TABLE IF EXISTS `icicibank`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `icicibank` (
+  `accId` varchar(15) NOT NULL,
+  `amount` double DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `icicibank`
+--
+
+LOCK TABLES `icicibank` WRITE;
+/*!40000 ALTER TABLE `icicibank` DISABLE KEYS */;
+INSERT INTO `icicibank` VALUES ('ICICI5420001',1300),('ICICI5420002',13600),('ICICI5420003',20000),('ICICI5420004',25000),('ICICI5420010',50000);
+/*!40000 ALTER TABLE `icicibank` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `account`
+--
+
+DROP TABLE IF EXISTS `account`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `account` (
+  `accNo` varchar(15) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `pin` varchar(4) NOT NULL,
+  `active` tinyint(1) DEFAULT NULL,
+  `dateOfOpening` date DEFAULT NULL,
+  `amount` double DEFAULT NULL,
+  `privilegeType` varchar(15) NOT NULL,
+  `accType` varchar(15) NOT NULL,
+  PRIMARY KEY (`accNo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `account`
+--
+
+LOCK TABLES `account` WRITE;
+/*!40000 ALTER TABLE `account` DISABLE KEYS */;
+INSERT INTO `account` VALUES ('PBI2012000001','Savings','2012',1,'2012-12-24',199400,'PREMIUM','SAVINGS'),('PBI2012000002','Current','2012',1,'2012-12-24',801700,'GOLD','CURRENT'),('PBI2012001001','Savings','2012',1,'2012-12-24',189800,'PREMIUM','SAVINGS'),('PBI2012001002','Current','2012',1,'2012-12-24',508000,'GOLD','CURRENT'),('PBI2012003401','Savings','2012',1,'2012-12-24',212100,'PREMIUM','SAVINGS'),('PBI2012003402','Current','2012',1,'2012-12-24',605200,'GOLD','CURRENT');
+/*!40000 ALTER TABLE `account` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `transaction`
+--
+
+DROP TABLE IF EXISTS `transaction`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `transaction` (
+  `transId` varchar(15) NOT NULL,
+  `transType` varchar(10) NOT NULL,
+  `accNo` varchar(15) NOT NULL,
+  `transDate` date DEFAULT NULL,
+  `amount` double DEFAULT NULL,
+  PRIMARY KEY (`transId`),
+  KEY `accNo` (`accNo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `transaction`
+--
+
+LOCK TABLES `transaction` WRITE;
+/*!40000 ALTER TABLE `transaction` DISABLE KEYS */;
+INSERT INTO `transaction` VALUES ('TR1001','DEPOSIT','PBI2012000001','2012-12-24',2000),('TR1002','WITHDRAW','PBI2012000001','2012-12-24',1000),('TR1004','WITHDRAW','PBI2012000001','2012-12-24',500),('TR1005','DEPOSIT','PBI2012000002','2012-12-24',500),('TR1003','TRANSFER','PBI2012000001','2012-12-24',500),('TR1007','WITHDRAW','PBI2012000001','2012-12-24',600),('TR1008','DEPOSIT','PBI2012000002','2012-12-24',600),('TR1006','TRANSFER','PBI2012000001','2012-12-24',600),('TR1010','WITHDRAW','PBI2012000001','2012-12-24',500),('TR1009','EXTERNAL','PBI2012000001','2012-12-24',500),('TR2001','DEPOSIT','PBI2012001001','2012-12-24',300),('TR2002','WITHDRAW','PBI2012001001','2012-12-24',1000),('TR2004','WITHDRAW','PBI2012001001','2012-12-24',5000),('TR2005','DEPOSIT','PBI2012001002','2012-12-24',5000),('TR2003','TRANSFER','PBI2012001001','2012-12-24',5000),('TR2007','WITHDRAW','PBI2012001001','2012-12-24',1500),('TR2008','DEPOSIT','PBI2012001002','2012-12-24',1500),('TR2006','TRANSFER','PBI2012001001','2012-12-24',1500),('TR2010','WITHDRAW','PBI2012001001','2012-12-24',3000),('TR2009','EXTERNAL','PBI2012001001','2012-12-24',3000),('TR3001','DEPOSIT','PBI2012003401','2012-12-24',20000),('TR3002','WITHDRAW','PBI2012003401','2012-12-24',3000),('TR3004','WITHDRAW','PBI2012003401','2012-12-24',4000),('TR3005','DEPOSIT','PBI2012003402','2012-12-24',4000),('TR3003','TRANSFER','PBI2012003401','2012-12-24',4000),('TR3007','WITHDRAW','PBI2012003401','2012-12-24',600),('TR3008','DEPOSIT','PBI2012003402','2012-12-24',600),('TR3006','TRANSFER','PBI2012003401','2012-12-24',600),('TR3010','WITHDRAW','PBI2012003401','2012-12-24',300),('TR3009','EXTERNAL','PBI2012003401','2012-12-24',300);
+/*!40000 ALTER TABLE `transaction` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pratianbank`
+--
+
+DROP TABLE IF EXISTS `pratianbank`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pratianbank` (
+  `accId` varchar(15) NOT NULL,
+  `amount` double DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pratianbank`
+--
+
+LOCK TABLES `pratianbank` WRITE;
+/*!40000 ALTER TABLE `pratianbank` DISABLE KEYS */;
+INSERT INTO `pratianbank` VALUES ('PBI2012001001',189800),('PBI2012001002',506500),('PBI2012003401',212100),('PBI2012003402',604600);
+/*!40000 ALTER TABLE `pratianbank` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `citibank`
+--
+
+DROP TABLE IF EXISTS `citibank`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `citibank` (
+  `accId` varchar(15) NOT NULL,
+  `amount` double DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `citibank`
+--
+
+LOCK TABLES `citibank` WRITE;
+/*!40000 ALTER TABLE `citibank` DISABLE KEYS */;
+INSERT INTO `citibank` VALUES ('CITI9230001',50000),('CITI9230002',60000),('CITI9230003',45000),('CITI9230004',75000),('CITI9230012',105000);
+/*!40000 ALTER TABLE `citibank` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2012-12-11 15:17:42
