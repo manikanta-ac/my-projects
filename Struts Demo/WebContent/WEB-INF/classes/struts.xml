@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+    
+<struts>
+    <constant name="struts.devMode" value="false"/>
+    
+    <package name="myPackage1" extends="struts-default">   
+       
+        <result-types>
+            <result-type name="tiles"
+                class="org.apache.struts2.views.tiles.TilesResult" />
+        </result-types>
+        
+        <action name="Login" class="com.span.sip.assignment.action.Login" method="authenticate">
+            <result name="success" type="tiles">userLayout</result>
+            <result name="input">/login.jsp</result>
+        </action>
+        
+        <action name="SignUp" class="com.span.sip.assignment.action.SignUp" method="addUser">
+            <result name="success" type="tiles">userLayout</result>
+            <result name="input">/signup.jsp</result>
+        </action>
+        
+         <action name="Delete" class="com.span.sip.assignment.action.SignUp" method="deleteUser">
+            <result name="success" type="tiles">userLayout</result>
+            <result name="input" type="tiles">userLayout</result>
+        </action>
+        
+         <action name="Edit" class="com.span.sip.assignment.action.SignUp" method="editUser">
+            <result name="true">/signup.jsp</result>
+          
+        </action>
+        
+        <action name="View" class="com.span.sip.assignment.action.SignUp" method="viewUser">
+            <result name="true">/signup.jsp</result>
+            <result name="input" type="tiles">userLayout</result>
+        </action>
+        
+        <action name="Update" class="com.span.sip.assignment.action.SignUp" method="updateUser">
+            <result name="success" type="tiles">userLayout</result>
+            <result name="input" type="tiles">userLayout</result>
+        </action>
+       </package>
+</struts>
