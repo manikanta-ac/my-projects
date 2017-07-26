@@ -1,0 +1,11 @@
+<beanio xmlns="http://www.beanio.org/2012/03" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.beanio.org/2012/03 http://www.beanio.org/2012/03/mapping.xsd">
+	<stream name="messageUnmarshallerFile" format="fixedlength">
+		<record name="message" class="map" minOccurs="1">
+			<field name="message.header" length="8" required="true" justify="left" />
+			<field name="message.sender " length="4" padding=" " justify="left" />
+			<field name="message.receiver" length="4" required="true" justify="left"  />
+			<field name="message.payload" required="true" length="unbounded" justify="left" />
+		</record>
+	</stream>
+</beanio>

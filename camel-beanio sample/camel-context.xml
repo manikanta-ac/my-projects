@@ -1,0 +1,14 @@
+<camelContext xmlns="http://camel.apache.org/schema/spring">
+  <!-- setup beanio data format -->
+  <dataFormats>
+	<beanio id="unmarshaller" mapping="classpath:META-INF/beanio/message-mapping.xml" streamName="messageUnmarshallerFile"/>
+  </dataFormats>
+ 
+  <route>
+    <from uri="direct:unmarshal"/>
+    <unmarshal ref="unmarshaller"/>
+	<bean ref="messageConverter" />
+	<bean ref="serviceImpl" method="handleMessage(*)" />
+  </route>
+   
+</camelContext>
