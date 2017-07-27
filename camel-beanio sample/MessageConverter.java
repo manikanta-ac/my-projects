@@ -1,4 +1,4 @@
-package com.evry.proj.message;
+package com.mani.proj.message;
 
 import java.util.Map;
 import org.apache.camel.Converter;
